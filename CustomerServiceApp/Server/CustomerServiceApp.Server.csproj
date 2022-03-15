@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Client\CustomerServiceApp.Client.csproj" />
+    <ProjectReference Include="..\Shared\AppSquare.Shared.Server\AppSquare.Shared.Server.csproj" />
   </ItemGroup>
 
   <ItemGroup>
