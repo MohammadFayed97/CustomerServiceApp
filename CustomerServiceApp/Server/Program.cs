@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+const string _myAllowSpecificOrigins = "_myAllowSpecificOrigins";
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
@@ -14,6 +15,10 @@ builder.Services.AddDbContext<ApplicationContext>(option =>
     .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking)
     .EnableSensitiveDataLogging()
     .EnableDetailedErrors();
+});
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(_myAllowSpecificOrigins, builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 });
 
 var app = builder.Build();
@@ -35,6 +40,7 @@ app.UseHttpsRedirection();
 app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
 
+app.UseCors("_myAllowSpecificOrigins");
 app.UseRouting();
 
 
