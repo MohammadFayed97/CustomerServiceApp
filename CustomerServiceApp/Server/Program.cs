@@ -1,3 +1,4 @@
+using AppSquare.Shared.AssemplyScanning;
 using AppSquare.Shared.Server;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
@@ -5,27 +6,9 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-const string _myAllowSpecificOrigins = "_myAllowSpecificOrigins";
 // Add services to the container.
-
-builder.Services.AddControllersWithViews();
-builder.Services.AddRazorPages();
-builder.Services.AddDbContext<ApplicationContext>(option =>
-{
-    option.UseSqlServer(builder.Configuration.GetConnectionString("DefualtConnection"), builder => builder.MigrationsAssembly(typeof(Program).Assembly.FullName))
-    .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking)
-    .EnableSensitiveDataLogging()
-    .EnableDetailedErrors();
-});
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(_myAllowSpecificOrigins, builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-});
-
-builder.Services.AddSwaggerGen(options =>
-{
-    options.SwaggerDoc("v1", new OpenApiInfo { Title = "AppSquereTask", Version = "v1" });
-});
+// Use Assembly scanning for register services automaticly
+builder.Services.AddInstallerFromReferancedAssemblies(builder.Configuration, typeof(Program).Assembly, "*.Server.dll");
 
 var app = builder.Build();
 
