@@ -21,7 +21,7 @@ public class ApplicationInstaller : IInstaller
 
         services.AddSwaggerGen(options =>
         {
-            options.SwaggerDoc("v1", new OpenApiInfo { Title = "AppSquereTask", Version = "v1" });
+            options.SwaggerDoc("v1", new OpenApiInfo { Title = "CustomerServiceApp", Version = "v1" });
         });
     }
 }

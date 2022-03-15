@@ -1,8 +1,4 @@
 using AppSquare.Shared.AssemplyScanning;
-using AppSquare.Shared.Server;
-using Microsoft.AspNetCore.ResponseCompression;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
