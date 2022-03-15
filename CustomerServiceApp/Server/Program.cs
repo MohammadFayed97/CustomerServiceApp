@@ -1,4 +1,6 @@
+using AppSquare.Shared.Server;
 using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +8,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<ApplicationContext>(option =>
+{
+    option.UseSqlServer(builder.Configuration.GetConnectionString("DefualtConnection"), builder => builder.MigrationsAssembly(typeof(Program).Assembly.FullName))
+    .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking)
+    .EnableSensitiveDataLogging()
+    .EnableDetailedErrors();
+});
 
 var app = builder.Build();
 
