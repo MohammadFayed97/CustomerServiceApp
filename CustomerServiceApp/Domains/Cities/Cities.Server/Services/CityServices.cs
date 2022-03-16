@@ -1,8 +1,5 @@
 namespace Cities.Server.Services;
 
-using Cities.Shared.Validations;
-using FluentValidation;
-
 public class CityServices : IInstaller
 {
     public void ConfigureServices(IServiceCollection services, IConfiguration configuration)

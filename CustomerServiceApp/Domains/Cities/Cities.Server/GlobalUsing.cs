@@ -10,3 +10,5 @@ global using AutoMapper;
 global using Cities.Server.Repositories;
 global using Cities.Server.UnitOfWorks;
 global using Cities.Shared.ViewModels;
+global using FluentValidation;
+global using Cities.Shared.Validations;

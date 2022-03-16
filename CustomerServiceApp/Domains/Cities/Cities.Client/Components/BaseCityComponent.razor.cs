@@ -9,30 +9,23 @@ public partial class BaseCityComponent
 
     private async Task HandleValidSubmit()
     {
-        try
+        string successMessage = string.Empty;
+        if (SystemFeatureType.Equals(SystemFeatureType.Add))
         {
-            string successMessage = string.Empty;
-            if (SystemFeatureType.Equals(SystemFeatureType.Add))
-            {
-                CityViewModel = await _cityHttpService.PostAsync("/api/cities", CityViewModel);
-                successMessage = "City Added Successfuly";
-            }
-            else if (SystemFeatureType.Equals(SystemFeatureType.Edit))
-            {
-                CityViewModel = await _cityHttpService.PutAsync("/api/cities", CityViewModel);
-                successMessage = "City Edited Successfuly";
-            }
-            else if(SystemFeatureType.Equals(SystemFeatureType.Delete))
-            {
-                CityViewModel = await _cityHttpService.DeleteAsync($"/api/cities/{CityViewModel.Id}");
-                successMessage = "City Deleted Successfuly";
-            }
-            _toastService.ShowSuccess(successMessage);
-            _navigationManager.NavigateTo("/cities");
+            CityViewModel = await _cityHttpService.PostAsync("/api/cities", CityViewModel);
+            successMessage = "City Added Successfuly";
         }
-        catch (Exception ex)
+        else if (SystemFeatureType.Equals(SystemFeatureType.Edit))
         {
-            _toastService.ShowError(ex.Message);
+            CityViewModel = await _cityHttpService.PutAsync("/api/cities", CityViewModel);
+            successMessage = "City Edited Successfuly";
         }
+        else if (SystemFeatureType.Equals(SystemFeatureType.Delete))
+        {
+            CityViewModel = await _cityHttpService.DeleteAsync($"/api/cities/{CityViewModel.Id}");
+            successMessage = "City Deleted Successfuly";
+        }
+        _toastService.ShowSuccess(successMessage);
+        _navigationManager.NavigateTo("/cities");
     }
 }

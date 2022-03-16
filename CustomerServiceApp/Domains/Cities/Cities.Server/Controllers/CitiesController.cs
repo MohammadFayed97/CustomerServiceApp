@@ -1,7 +1,5 @@
 ﻿namespace Account.Server.Controllers;
 
-using FluentValidation;
-
 [ApiController]
 [Route("api/[controller]")]
 public class CitiesController : BaseController<City, CityViewModel>
