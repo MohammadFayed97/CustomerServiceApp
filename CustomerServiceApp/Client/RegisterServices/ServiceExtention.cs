@@ -6,6 +6,8 @@ using Account.Shared.ViewModels;
 using AppSquare.Shared.Client;
 using Blazored.LocalStorage;
 using Cities.Client.HttpServices;
+using Cities.Shared.Validations;
+using Cities.Shared.ViewModels;
 using FluentValidation;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -16,6 +18,7 @@ public static class ServiceExtention
     {
         services.AddScoped<IValidator<UserForLoginViewModel>, UserForLoginValidator>();
         services.AddScoped<IValidator<UserForRegisterViewModel>, UserForRegisterValidator>();
+        services.AddScoped<IValidator<CityViewModel>, CityValidator>();
     }
     public static void ConfigureAuthentication(this IServiceCollection services, IWebAssemblyHostEnvironment hostEnvironment)
     {
