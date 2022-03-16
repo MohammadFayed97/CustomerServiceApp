@@ -9,7 +9,7 @@ public static class JwtParser
 
         byte[] jsonBytes = ParseBase64WithoutPadding(payload);
 
-        Dictionary<string, object> KeyValuePairs = JsonSerializer.Deserialize<Dictionary<string, object>>(jsonBytes);
+        Dictionary<string, object> KeyValuePairs = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, object>>(jsonBytes);
 
         claims.AddRange(KeyValuePairs.Select(e => new Claim(e.Key, e.Value.ToString())));
 

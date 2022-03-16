@@ -17,7 +17,7 @@ public partial class RenderCitiesComponent
     {
         try
         {
-            cities = await _cityHttpService.GetCitiesAsync("/api/cities");
+            cities = await _cityHttpService.GetAsync("/api/cities");
             StateHasChanged();
         }
         catch (Exception ex)

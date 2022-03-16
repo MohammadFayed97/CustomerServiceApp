@@ -1,22 +1,15 @@
-﻿namespace Cities.Client.HttpServices;
+﻿namespace AppSquare.Shared.Client.HttpServices;
 
-using Cities.Shared.ViewModels;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-public class CityHttpService : ICityHttpService
+public class HttpService<TViewModel> : IHttpService<TViewModel> 
+    where TViewModel : BaseViewModel
 {
     private readonly HttpClient _httpClient;
 
-    public CityHttpService(HttpClient httpClient) => _httpClient = httpClient;
+    public HttpService(HttpClient httpClient) => _httpClient = httpClient;
 
-    public async Task<IEnumerable<CityViewModel>> GetCitiesAsync(string url)
+    public async Task<IEnumerable<TViewModel>> GetAsync(string url)
     {
-        IEnumerable<CityViewModel> viewModels = new List<CityViewModel>();
+        IEnumerable<TViewModel> viewModels = new List<TViewModel>();
         try
         {
             HttpResponseMessage result = await _httpClient.GetAsync(url);
@@ -29,7 +22,7 @@ public class CityHttpService : ICityHttpService
             }
 
             Console.WriteLine("Get successfully");
-            viewModels = JsonConvert.DeserializeObject<IEnumerable<CityViewModel>>(content);
+            viewModels = JsonConvert.DeserializeObject<IEnumerable<TViewModel>>(content);
             return viewModels;
         }
         catch (Exception ex)
@@ -39,9 +32,9 @@ public class CityHttpService : ICityHttpService
         }
         return viewModels;
     }
-    public async Task<CityViewModel> GetCityByIdAsync(string url)
+    public async Task<TViewModel> GetByIdAsync(string url)
     {
-        CityViewModel cityViewModel = new CityViewModel();
+        TViewModel cityViewModel = null;
         try
         {
             HttpResponseMessage result = await _httpClient.GetAsync(url);
@@ -54,7 +47,7 @@ public class CityHttpService : ICityHttpService
             }
 
             Console.WriteLine("GetById successfully");
-            cityViewModel = JsonConvert.DeserializeObject<CityViewModel>(resultContent);
+            cityViewModel = JsonConvert.DeserializeObject<TViewModel>(resultContent);
             return cityViewModel;
         }
         catch (Exception ex)
@@ -64,11 +57,11 @@ public class CityHttpService : ICityHttpService
         }
         return cityViewModel;
     }
-    public async Task<CityViewModel> PostCityAsync(string url, CityViewModel cityViewModel)
+    public async Task<TViewModel> PostAsync(string url, TViewModel viewModel)
     {
         try
         {
-            var content = JsonConvert.SerializeObject(cityViewModel);
+            var content = JsonConvert.SerializeObject(viewModel);
             var bodyContent = new StringContent(content, Encoding.UTF8, "application/json");
 
             HttpResponseMessage result = await _httpClient.PostAsync(url, bodyContent);
@@ -81,21 +74,21 @@ public class CityHttpService : ICityHttpService
             }
 
             Console.WriteLine("Post successfully");
-            cityViewModel = JsonConvert.DeserializeObject<CityViewModel>(resultContent);
-            return cityViewModel;
+            viewModel = JsonConvert.DeserializeObject<TViewModel>(resultContent);
+            return viewModel;
         }
         catch (Exception ex)
         {
             // Can log or show Toaster
             Console.WriteLine(ex.Message);
         }
-        return cityViewModel;
+        return viewModel;
     }
-    public async Task<CityViewModel> PutCityAsync(string url, CityViewModel cityViewModel)
+    public async Task<TViewModel> PutAsync(string url, TViewModel viewModel)
     {
         try
         {
-            var content = JsonConvert.SerializeObject(cityViewModel);
+            var content = JsonConvert.SerializeObject(viewModel);
             var bodyContent = new StringContent(content, Encoding.UTF8, "application/json");
 
             HttpResponseMessage result = await _httpClient.PutAsync(url, bodyContent);
@@ -108,19 +101,19 @@ public class CityHttpService : ICityHttpService
             }
 
             Console.WriteLine("Put successfully");
-            cityViewModel = JsonConvert.DeserializeObject<CityViewModel>(resultContent);
-            return cityViewModel;
+            viewModel = JsonConvert.DeserializeObject<TViewModel>(resultContent);
+            return viewModel;
         }
         catch (Exception ex)
         {
             // Can log or show Toaster
             Console.WriteLine(ex.Message);
         }
-        return cityViewModel;
+        return viewModel;
     }
-    public async Task<CityViewModel> DeleteCityAsync(string url)
+    public async Task<TViewModel> DeleteAsync(string url)
     {
-        CityViewModel cityViewModel = new CityViewModel();
+        TViewModel viewModel = null;
         try
         {
             HttpResponseMessage result = await _httpClient.DeleteAsync(url);
@@ -133,14 +126,14 @@ public class CityHttpService : ICityHttpService
             }
 
             Console.WriteLine("Delete successfully");
-            cityViewModel = JsonConvert.DeserializeObject<CityViewModel>(resultContent);
-            return cityViewModel;
+            viewModel = JsonConvert.DeserializeObject<TViewModel>(resultContent);
+            return viewModel;
         }
         catch (Exception ex)
         {
             // Can log or show Toaster
             Console.WriteLine(ex.Message);
         }
-        return cityViewModel;
+        return viewModel;
     }
 }

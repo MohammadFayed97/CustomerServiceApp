@@ -1,0 +1,9 @@
+﻿<FormBaseComponent TViewModel="CityViewModel" ViewModel="CityViewModel" SystemFeature="SystemFeatureType" FormTitle="@($"{SystemFeatureType.ToString()} City")"
+                   HandleValidSubmit="HandleValidSubmit" OnCancel="@(() => _navigationManager.NavigateTo("/cities"))">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <InputText class="form-control" @bind-Value="CityViewModel.Name"
+                   disabled="@(SystemFeatureType.Equals(SystemFeatureType.Details) || SystemFeatureType.Equals(SystemFeatureType.Delete))"/>
+        <ValidationMessage For="@(() => CityViewModel.Name)" />
+    </div>
+</FormBaseComponent>

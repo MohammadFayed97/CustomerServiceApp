@@ -1,29 +1,22 @@
 ﻿namespace Cities.Client.Components;
 
-using Cities.Shared.ViewModels;
-using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 public partial class DeleteCityComponent
 {
     [Parameter]
     public Guid CityId { get; set; }
+    [Parameter]
+    public string SystemFeatureTypeParameter { get; set; }
 
+    private SystemFeatureType systemFeatureType = SystemFeatureType.Add;
     private CityViewModel cityViewModel = new CityViewModel();
 
     protected override async Task OnInitializedAsync()
     {
-        cityViewModel = await _cityHttpService.GetCityByIdAsync($"/api/cities/{CityId}");
-    }
+        systemFeatureType = (SystemFeatureType)Enum.Parse(typeof(SystemFeatureType), SystemFeatureTypeParameter, true);
 
-    private async Task DeleteCity()
-    {
-        await _cityHttpService.DeleteCityAsync($"/api/cities/{CityId}");
-        _toastService.ShowSuccess($"City {cityViewModel.Name} deleted successfully");
-        _navigationManager.NavigateTo("/cities");
+        if (systemFeatureType.Equals(SystemFeatureType.Add))
+            return;
+
+        cityViewModel = await _cityHttpService.GetByIdAsync($"/api/cities/{CityId.ToString()}");
     }
 }
