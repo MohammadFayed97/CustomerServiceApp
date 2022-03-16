@@ -34,10 +34,12 @@ $ cd CustomerServiceApp
 # build this class liberary to make sure everything is working
 $ dotnet build
 ```
-You need to change the ConnectionString in AppSetting.json file You need to add Secret Key to your Environment variable
+You need to change the ConnectionString in AppSetting.json file You need to add Secret Key to your Environment variable:
+
 ```bash
 # To create an environment variable, we have to open the cmd window as an administrator and type the following command:
 $ setx SECRET "CodeMazeSecretKey" /M
+```
 
 ## You may also like...
 
