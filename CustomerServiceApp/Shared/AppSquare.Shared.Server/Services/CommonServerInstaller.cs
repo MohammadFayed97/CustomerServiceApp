@@ -8,5 +8,11 @@ public class CommonServerInstaller : IInstaller
         services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
         services.AddScoped(typeof(IBaseGetUnitOfWork<,>), typeof(BaseGetUnitOfWork<,>));
         services.AddScoped(typeof(IBaseUnitOfWork<,>), typeof(BaseUnitOfWork<,>));
+
+        services.AddFluentValidation(options =>
+        {
+            options.AutomaticValidationEnabled = true;
+            options.DisableDataAnnotationsValidation = true;
+        });
     }
 }
