@@ -1,11 +1,18 @@
 ﻿namespace AppSquare.Shared.Client.HttpServices;
 
+using Blazored.Toast.Services;
+
 public class HttpService<TViewModel> : IHttpService<TViewModel> 
     where TViewModel : BaseViewModel
 {
     private readonly HttpClient _httpClient;
+    private readonly IToastService _toastService;
 
-    public HttpService(HttpClient httpClient) => _httpClient = httpClient;
+    public HttpService(HttpClient httpClient, IToastService toastService)
+    {
+        _httpClient = httpClient;
+        _toastService = toastService;
+    }
 
     public async Task<IEnumerable<TViewModel>> GetAsync(string url)
     {
@@ -17,18 +24,20 @@ public class HttpService<TViewModel> : IHttpService<TViewModel>
 
             if (!result.IsSuccessStatusCode)
             {
-                // Can log or show Toaster with message that contain that error.
+                // Can log here
                 Console.WriteLine(content);
+                throw new Exception(content);
             }
 
             Console.WriteLine("Get successfully");
             viewModels = JsonConvert.DeserializeObject<IEnumerable<TViewModel>>(content);
             return viewModels;
         }
-        catch (Exception ex)
+        catch (Exception exception)
         {
-            // Can log or show Toaster
-            Console.WriteLine(ex.Message);
+            // Can log here
+            Console.WriteLine(exception.Message);
+            _toastService.ShowToast(ToastLevel.Error, exception.Message);
         }
         return viewModels;
     }
@@ -44,16 +53,18 @@ public class HttpService<TViewModel> : IHttpService<TViewModel>
             {
                 // Can log or show Toaster with message that contain that error.
                 Console.WriteLine(resultContent);
+                throw new Exception(resultContent);
             }
 
             Console.WriteLine("GetById successfully");
             cityViewModel = JsonConvert.DeserializeObject<TViewModel>(resultContent);
             return cityViewModel;
         }
-        catch (Exception ex)
+        catch (Exception exception)
         {
-            // Can log or show Toaster
-            Console.WriteLine(ex.Message);
+            // Can log here
+            Console.WriteLine(exception.Message);
+            _toastService.ShowError(exception.Message);
         }
         return cityViewModel;
     }
@@ -71,16 +82,18 @@ public class HttpService<TViewModel> : IHttpService<TViewModel>
             {
                 // Can log or show Toaster with message that contain that error.
                 Console.WriteLine(resultContent);
+                throw new Exception(resultContent);
             }
 
             Console.WriteLine("Post successfully");
             viewModel = JsonConvert.DeserializeObject<TViewModel>(resultContent);
             return viewModel;
         }
-        catch (Exception ex)
+        catch (Exception exception)
         {
-            // Can log or show Toaster
-            Console.WriteLine(ex.Message);
+            // Can log here
+            Console.WriteLine(exception.Message);
+            _toastService.ShowError(exception.Message);
         }
         return viewModel;
     }
@@ -96,18 +109,20 @@ public class HttpService<TViewModel> : IHttpService<TViewModel>
             string resultContent = await result.Content.ReadAsStringAsync();
             if (!result.IsSuccessStatusCode)
             {
-                // Can log or show Toaster with message that contain that error.
+                // Can log here
                 Console.WriteLine(resultContent);
+                throw new Exception(resultContent);
             }
 
             Console.WriteLine("Put successfully");
             viewModel = JsonConvert.DeserializeObject<TViewModel>(resultContent);
             return viewModel;
         }
-        catch (Exception ex)
+        catch (Exception exception)
         {
-            // Can log or show Toaster
-            Console.WriteLine(ex.Message);
+            // Can log here
+            Console.WriteLine(exception.Message);
+            _toastService.ShowError(exception.Message);
         }
         return viewModel;
     }
@@ -129,10 +144,11 @@ public class HttpService<TViewModel> : IHttpService<TViewModel>
             viewModel = JsonConvert.DeserializeObject<TViewModel>(resultContent);
             return viewModel;
         }
-        catch (Exception ex)
+        catch (Exception exception)
         {
-            // Can log or show Toaster
-            Console.WriteLine(ex.Message);
+            // Can log here
+            Console.WriteLine(exception.Message);
+            _toastService.ShowError(exception.Message);
         }
         return viewModel;
     }
