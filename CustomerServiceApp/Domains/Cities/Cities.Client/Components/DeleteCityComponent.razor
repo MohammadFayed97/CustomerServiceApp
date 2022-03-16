@@ -1,0 +1,29 @@
+﻿@page "/cities/Delete/{CityId:guid}"
+
+
+<div class="alert alert-danger">
+    <p>Are you sure to delete @cityViewModel.Name</p>
+</div>
+<div class="card">
+    <div class="card-header">
+        <h3>Delete @cityViewModel.Name</h3>
+    </div>
+    <EditForm Model="cityViewModel">
+        <FluentValidator />
+        <div class="card-body">
+            <div class="row">
+                <div class="form-group">
+                    <label for="name">City Name</label>
+                    <InputText class="form-control" disabled @bind-Value="cityViewModel.Name" />
+                    <ValidationMessage For="@(() => cityViewModel.Name)" />
+                </div>
+            </div>
+        </div>
+        <div class="card-footer d-flex justify-content-end">
+            <div>
+                <button class="btn btn-danger mr-3" @onclick="async () => await DeleteCity()">Delete</button>
+                <button class="btn btn-danger mr-3" @onclick="@(() => _navigationManager.NavigateTo("/cities"))">Cancel</button>
+            </div>
+        </div>
+    </EditForm>
+</div>
