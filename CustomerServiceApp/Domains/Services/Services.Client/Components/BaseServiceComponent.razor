@@ -1,0 +1,15 @@
+<FormBaseComponent TViewModel="ServiceViewModel" ViewModel="ServiceViewModel" SystemFeature="SystemFeatureType" FormTitle="@($"{SystemFeatureType.ToString()} Service")"
+                   HandleValidSubmit="HandleValidSubmit" OnCancel="@(() => _navigationManager.NavigateTo("/services"))">
+    <div class="form-group col-md-6">
+        <label for="name">Name</label>
+        <InputText class="form-control" @bind-Value="ServiceViewModel.Name"
+                   disabled="@(SystemFeatureType.Equals(SystemFeatureType.Details) || SystemFeatureType.Equals(SystemFeatureType.Delete))"/>
+        <ValidationMessage For="@(() => ServiceViewModel.Name)" />
+    </div>
+    <div class="form-group col-md-6">
+        <label for="price">Price</label>
+        <InputNumber class="form-control" @bind-Value="ServiceViewModel.Price"
+                   disabled="@(SystemFeatureType.Equals(SystemFeatureType.Details) || SystemFeatureType.Equals(SystemFeatureType.Delete))"/>
+        <ValidationMessage For="@(() => ServiceViewModel.Price)" />
+    </div>
+</FormBaseComponent>

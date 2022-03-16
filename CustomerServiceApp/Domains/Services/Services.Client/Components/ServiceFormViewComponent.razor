@@ -1,0 +1,12 @@
+@page "/services/{SystemFeatureTypeParameter}"
+@page "/services/{SystemFeatureTypeParameter}/{ServiceId:guid}"
+
+<PageTitle>@systemFeatureType.ToString() Service</PageTitle>
+
+@if (systemFeatureType.Equals(SystemFeatureType.Delete))
+{
+    <div class="alert alert-danger">
+        <p>Does you want  delete "@serviceViewModel?.Name"</p>
+    </div>
+}
+<BaseServiceComponent ServiceViewModel="serviceViewModel" SystemFeatureType="systemFeatureType" />

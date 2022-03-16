@@ -11,6 +11,8 @@ using Cities.Shared.ViewModels;
 using FluentValidation;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Services.Shared.Validations;
+using Services.Shared.ViewModels;
 
 public static class ServiceExtention
 {
@@ -19,6 +21,7 @@ public static class ServiceExtention
         services.AddScoped<IValidator<UserForLoginViewModel>, UserForLoginValidator>();
         services.AddScoped<IValidator<UserForRegisterViewModel>, UserForRegisterValidator>();
         services.AddScoped<IValidator<CityViewModel>, CityValidator>();
+        services.AddScoped<IValidator<ServiceViewModel>, ServiceValidator>();
     }
     public static void ConfigureAuthentication(this IServiceCollection services, IWebAssemblyHostEnvironment hostEnvironment)
     {
