@@ -5,6 +5,7 @@ using Account.Shared.Validations;
 using Account.Shared.ViewModels;
 using AppSquare.Shared.Client;
 using Blazored.LocalStorage;
+using Cities.Client.HttpServices;
 using FluentValidation;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -24,5 +25,9 @@ public static class ServiceExtention
         services.AddBlazoredLocalStorage();
         services.AddScoped<AuthenticationStateProvider, AuthStateProvider>();
         services.AddScoped<IAuthenticationService, AuthenticationService>();
+    }
+    public static void ConfigureDomainsHttpServices(this IServiceCollection services)
+    {
+        services.AddScoped<ICityHttpService, CityHttpService>();
     }
 }
