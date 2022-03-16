@@ -1,6 +1,6 @@
 <h1 align="center">Customer Service Application</h1>
 
-<h4 align="center">This repo for the Sample Customer Service project</h4>
+<h4 align="center">This repo for the Sample Customer Service project created with BlazorWA Core Hosted</h4>
 
 <p align="center">
   <a href="#key-features">Key Features</a> •
