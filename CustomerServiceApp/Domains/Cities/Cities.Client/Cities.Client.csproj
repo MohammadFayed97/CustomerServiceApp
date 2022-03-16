@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Shared\AppSquare.Shared\AppSquare.Shared.csproj" />
+    <ProjectReference Include="..\..\..\Shared\AppSquare.Shared.Client\AppSquare.Shared.Client.csproj" />
     <ProjectReference Include="..\Cities.Shared\Cities.Shared.csproj" />
   </ItemGroup>
 

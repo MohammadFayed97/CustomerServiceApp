@@ -1,0 +1,17 @@
+﻿@page "/cities/Add"
+
+<h3 class="text-center">Create City</h3>
+
+<EditForm Model="cityViewModel" OnValidSubmit="HandleValidSubmit" class="card card-body bg-light mt-5">
+    <FluentValidator />
+    <div class="row">
+        <div class="col form-group">
+            <label for="name">City Name</label>
+            <InputText id="username" class="form-control" @bind-Value="cityViewModel.Name" />
+            <ValidationMessage For="@(() => cityViewModel.Name)" />
+        </div>
+        <div class="col-md-3 text-center align-self-end">
+            <button type="submit" class="btn btn-success">Save</button>
+        </div>
+    </div>
+</EditForm>

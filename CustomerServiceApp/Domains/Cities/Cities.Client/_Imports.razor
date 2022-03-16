@@ -1,4 +1,8 @@
-﻿@using Microsoft.AspNetCore.Components.Web
+﻿@using Blazored.Toast.Services
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Components.Forms
 @using Cities.Client.HttpServices;
 
+@inject IToastService _toastService
 @inject ICityHttpService _cityHttpService
+@inject NavigationManager _navigationManager
