@@ -1,0 +1,55 @@
+﻿@page "/CreateUser"
+
+@attribute [Authorize]
+
+@if (showErrors)
+{
+    <div class="alert alert-danger" role="alert">
+        @foreach (var error in errors)
+        {
+            <p>@error</p>
+        }
+    </div>
+}
+@if (showSuccess)
+{
+    <div class="alert alert-success" role="alert">
+        <p>User Added Successfully</p>
+    </div>
+}
+
+<EditForm Model="userForRegister" OnValidSubmit="RegisterUser" class="card card-body bg-light mt-5">
+    <DataAnnotationsValidator />
+    <div class="row">
+        <div class="form-group col-md-6 mb-2">
+            <label for="firstname">FirstName</label>
+            <InputText id="firstname" class="form-control" @bind-Value="userForRegister.FirstName" />
+            <ValidationMessage For="@(() => userForRegister.FirstName)" />
+        </div>
+        <div class="form-group col-md-6 mb-2">
+            <label for="lastname">LastName</label>
+            <InputText id="lastname" class="form-control" @bind-Value="userForRegister.LastName" />
+            <ValidationMessage For="@(() => userForRegister.LastName)" />
+        </div>
+        <div class="form-group mb-2">
+            <label for="username">UserName</label>
+            <InputText id="username" class="form-control" @bind-Value="userForRegister.UserName" />
+            <ValidationMessage For="@(() => userForRegister.UserName)" />
+        </div>
+        <div class="form-group mb-2">
+            <label for="password">Password</label>
+            <InputText type="password" id="password" class="form-control" @bind-Value="userForRegister.Password" />
+            <ValidationMessage For="@(() => userForRegister.Password)" />
+        </div>
+        <div class="form-group mb-2">
+            <label for="confirm">Confirm Password</label>
+            <InputText type="password" id="confirm" class="form-control" @bind-Value="userForRegister.ConfirmPassword" />
+            <ValidationMessage For="@(() => userForRegister.ConfirmPassword)" />
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-md-12 text-right">
+            <button type="submit" class="btn btn-success">Create User</button>
+        </div>
+    </div>
+</EditForm>

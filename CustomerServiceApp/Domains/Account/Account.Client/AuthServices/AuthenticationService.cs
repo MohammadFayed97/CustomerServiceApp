@@ -13,6 +13,22 @@ public class AuthenticationService : IAuthenticationService
         _authStateProvider = authStateProvider;
     }
 
+    public async Task<RegisterUserResponse> CreateUser(UserForRegisterViewModel userForRegister)
+    {
+        string content = JsonConvert.SerializeObject(userForRegister);
+        StringContent bodyContent = new StringContent(content, Encoding.UTF8, "application/json");
+
+        HttpResponseMessage result = await _httpClient.PostAsync("api/Account/RegisterUser", bodyContent);
+        if (!result.IsSuccessStatusCode)
+        {
+            string response = await result.Content.ReadAsStringAsync();
+            RegisterUserResponse? registerationResponse = JsonConvert.DeserializeObject<RegisterUserResponse>(response);
+
+            return registerationResponse;
+        }
+        return new RegisterUserResponse { IsSucceeded = true };
+    }
+
     public async Task<AuthResponseViewModel> Login(UserForLoginViewModel userForLogin)
     {
         string content = JsonConvert.SerializeObject(userForLogin);
