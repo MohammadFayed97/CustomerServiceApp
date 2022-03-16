@@ -21,6 +21,7 @@
     <ProjectReference Include="..\Client\CustomerServiceApp.Client.csproj" />
     <ProjectReference Include="..\Domains\Account\Account.Server\Account.Server.csproj" />
     <ProjectReference Include="..\Domains\Cities\Cities.Server\Cities.Server.csproj" />
+    <ProjectReference Include="..\Domains\Services\Services.Server\Services.Server.csproj" />
     <ProjectReference Include="..\Shared\AppSquare.Shared.Server\AppSquare.Shared.Server.csproj" />
   </ItemGroup>
 
