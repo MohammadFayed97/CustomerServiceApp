@@ -14,16 +14,14 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Client\CustomerServiceApp.Client.csproj" />
     <ProjectReference Include="..\Domains\Account\Account.Server\Account.Server.csproj" />
+    <ProjectReference Include="..\Domains\Cities\Cities.Server\Cities.Server.csproj" />
     <ProjectReference Include="..\Shared\AppSquare.Shared.Server\AppSquare.Shared.Server.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 
