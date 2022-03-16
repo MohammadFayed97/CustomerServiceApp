@@ -38,7 +38,7 @@ You need to change the ConnectionString in AppSetting.json file You need to add 
 
 ```bash
 # To create an environment variable, we have to open the cmd window as an administrator and type the following command:
-$ setx SECRET "CodeMazeSecretKey" /M
+$ setx SECRET "CustomerServiceSecretKey" /M
 ```
 
 ## You may also like...
