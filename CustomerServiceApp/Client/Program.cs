@@ -9,6 +9,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.ConfigureFluentValidationServices();
 builder.Services.ConfigureAuthentication(builder.HostEnvironment);
-builder.Services.ConfigureDomainsHttpServices();
+builder.Services.ConfigureHttpServices();
 builder.Services.AddBlazoredToast();
+
 await builder.Build().RunAsync();

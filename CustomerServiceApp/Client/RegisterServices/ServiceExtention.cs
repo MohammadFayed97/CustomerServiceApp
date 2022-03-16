@@ -4,8 +4,8 @@ using Account.Client.AuthServices;
 using Account.Shared.Validations;
 using Account.Shared.ViewModels;
 using AppSquare.Shared.Client;
+using AppSquare.Shared.Client.HttpServices;
 using Blazored.LocalStorage;
-using Cities.Client.HttpServices;
 using Cities.Shared.Validations;
 using Cities.Shared.ViewModels;
 using FluentValidation;
@@ -29,8 +29,8 @@ public static class ServiceExtention
         services.AddScoped<AuthenticationStateProvider, AuthStateProvider>();
         services.AddScoped<IAuthenticationService, AuthenticationService>();
     }
-    public static void ConfigureDomainsHttpServices(this IServiceCollection services)
+    public static void ConfigureHttpServices(this IServiceCollection services)
     {
-        services.AddScoped<ICityHttpService, CityHttpService>();
+        services.AddScoped(typeof(IHttpService<>), typeof(HttpService<>));
     }
 }

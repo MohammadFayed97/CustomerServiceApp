@@ -24,7 +24,7 @@ public partial class BaseCityComponent
             }
             else if(SystemFeatureType.Equals(SystemFeatureType.Delete))
             {
-                CityViewModel = await _cityHttpService.DeleteCityAsync($"/api/cities/{CityViewModel.Id}");
+                CityViewModel = await _cityHttpService.DeleteAsync($"/api/cities/{CityViewModel.Id}");
                 successMessage = "City Deleted Successfuly";
             }
             _toastService.ShowSuccess(successMessage);
