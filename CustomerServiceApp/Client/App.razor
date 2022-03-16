@@ -1,4 +1,8 @@
-﻿<CascadingAuthenticationState>
+﻿@using Blazored.Toast
+
+<BlazoredToasts Position="Blazored.Toast.Configuration.ToastPosition.BottomRight" ShowProgressBar="true" Timeout="3" />
+
+<CascadingAuthenticationState>
     <Router AppAssembly="@typeof(App).Assembly" AdditionalAssemblies="additionalAssemblies">
         <Found Context="routeData">
             <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
