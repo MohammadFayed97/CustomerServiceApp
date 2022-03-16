@@ -17,3 +17,5 @@ global using Account.Server.AuthenticationManagers;
 global using Account.Server.Entities;
 global using Account.Server.Repositories;
 global using Account.Shared.ViewModels;
+global using Account.Shared.Validations;
+global using FluentValidation;
