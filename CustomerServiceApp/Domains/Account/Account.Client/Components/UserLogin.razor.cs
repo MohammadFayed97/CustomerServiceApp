@@ -1,11 +1,23 @@
 ﻿namespace Account.Client.Components;
 
+using Microsoft.AspNetCore.Components;
+
 public partial class UserLogin
 {
+    [CascadingParameter]
+    public Task<AuthenticationState> AuthenticationState { get; set; }
+
     private UserForLoginViewModel userForLogin = new UserForLoginViewModel();
     private bool showErrors;
     private string error;
 
+    protected override async void OnInitialized()
+    {
+        if ((await AuthenticationState).User.Identity.IsAuthenticated)
+            _navigationManager.NavigateTo("/");
+
+        base.OnInitialized();
+    }
     private async Task LoginUser()
     {
         try
