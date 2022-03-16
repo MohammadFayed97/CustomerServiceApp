@@ -15,4 +15,5 @@ global using AppSquare.Shared.AssemplyScanning;
 
 global using Account.Server.AuthenticationManagers;
 global using Account.Server.Entities;
+global using Account.Server.Repositories;
 global using Account.Shared.ViewModels;
