@@ -1,11 +1,9 @@
-﻿@using Microsoft.AspNetCore.Components.Authorization
-@using System.Reflection
-<CascadingAuthenticationState>
+﻿<CascadingAuthenticationState>
     <Router AppAssembly="@typeof(App).Assembly" AdditionalAssemblies="additionalAssemblies">
         <Found Context="routeData">
             <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
                 <NotAuthorized>
-                    You can't see this page because you not authiticated, Please login first
+                    <RedirectToLogin Route="/Login" />
                 </NotAuthorized>
             </AuthorizeRouteView>
             <FocusOnNavigate RouteData="@routeData" Selector="h1" />
@@ -22,6 +20,7 @@
 @code {
     private Assembly[] additionalAssemblies = new[]
     {
-            Assembly.Load("Account.Client.dll")
+        Assembly.Load("Account.Client.dll"),
+        Assembly.Load("Cities.Client.dll")
     };
 }

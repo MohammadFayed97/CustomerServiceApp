@@ -7,12 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.2" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.3" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Domains\Account\Account.Client\Account.Client.csproj" />
+    <ProjectReference Include="..\Domains\Cities\Cities.Client\Cities.Client.csproj" />
+    <ProjectReference Include="..\Shared\AppSquare.Shared.Client\AppSquare.Shared.Client.csproj" />
   </ItemGroup>
 
 </Project>

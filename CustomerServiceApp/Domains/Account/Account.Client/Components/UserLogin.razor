@@ -1,5 +1,7 @@
 ﻿@page "/login"
+@using FluentValidation
 
+@inject IValidator<UserForLoginViewModel> _validator
 @if (showErrors)
 {
     <div class="alert alert-danger" role="alert">
@@ -7,7 +9,7 @@
     </div>
 }
 <EditForm Model="userForLogin" OnValidSubmit="LoginUser" class="card card-body bg-light mt-5">
-    <DataAnnotationsValidator />
+    <FluentValidator />
     <div class="row">
         <div class="form-group">
             <label for="username">UserName:</label>
