@@ -1,0 +1,29 @@
+﻿@page "/cities/Edit/{CityId:guid}"
+
+<div class="card">
+    <div class="card-header">
+        <h3>Edit @cityViewModel.Name</h3>
+    </div>
+    <EditForm Model="cityViewModel" OnValidSubmit="HandleValidSubmit">
+        <FluentValidator />
+        <div class="card-body">
+            <div class="row">
+                <div class="form-group">
+                    <label for="name">City Name</label>
+                    <InputText class="form-control" @bind-Value="cityViewModel.Name" />
+                    <ValidationMessage For="@(() => cityViewModel.Name)" />
+                </div>
+            </div>
+        </div>
+        <div class="card-footer d-flex justify-content-end">
+            <div>
+                <button class="btn btn-danger mr-3" @onclick="@(() => _navigationManager.NavigateTo("/cities"))">Cancel</button>
+                <button type="submit" class="btn btn-success">Save</button>
+            </div>
+        </div>
+    </EditForm>
+</div>
+
+@code {
+
+}
