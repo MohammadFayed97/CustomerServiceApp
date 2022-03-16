@@ -1,4 +1,5 @@
 using AppSquare.Shared.AssemplyScanning;
+using AppSquare.Shared.Server;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,7 @@ else
 app.UseSwagger();
 app.UseSwaggerUI();
 
+app.ConfigureExceptionHandler();
 app.UseHttpsRedirection();
 
 app.UseBlazorFrameworkFiles();
@@ -30,6 +32,8 @@ app.UseStaticFiles();
 app.UseCors("_myAllowSpecificOrigins");
 app.UseRouting();
 
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapRazorPages();
 app.MapControllers();

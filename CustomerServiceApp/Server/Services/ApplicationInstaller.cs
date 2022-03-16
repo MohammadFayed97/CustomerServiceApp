@@ -4,6 +4,7 @@ using AppSquare.Shared.AssemplyScanning;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using AutoMapper;
 
 public class ApplicationInstaller : IInstaller
 {
@@ -18,10 +19,10 @@ public class ApplicationInstaller : IInstaller
         {
             options.AddPolicy(_myAllowSpecificOrigins, builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
         });
-
         services.AddSwaggerGen(options =>
         {
             options.SwaggerDoc("v1", new OpenApiInfo { Title = "CustomerServiceApp", Version = "v1" });
         });
+        services.AddAutoMapper(typeof(Program).Assembly);
     }
 }
