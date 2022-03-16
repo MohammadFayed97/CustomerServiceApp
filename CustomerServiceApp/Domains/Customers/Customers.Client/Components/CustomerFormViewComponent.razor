@@ -1,0 +1,12 @@
+@page "/customers/{SystemFeatureTypeParameter}"
+@page "/customers/{SystemFeatureTypeParameter}/{CustomerId:guid}"
+
+<PageTitle>@systemFeatureType.ToString() Customer</PageTitle>
+
+@if (systemFeatureType.Equals(SystemFeatureType.Delete))
+{
+    <div class="alert alert-danger">
+        <p>Does you want  delete "@customerViewModel?.Name"</p>
+    </div>
+}
+<BaseCustomerComponent CustomerViewModel="customerViewModel" SystemFeatureType="systemFeatureType" />

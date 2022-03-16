@@ -1,0 +1,20 @@
+<FormBaseComponent TViewModel="CustomerViewModel" ViewModel="CustomerViewModel" SystemFeature="SystemFeatureType" FormTitle="@($"{SystemFeatureType.ToString()} Customer")"
+                   HandleValidSubmit="HandleValidSubmit" OnCancel="@(() => _navigationManager.NavigateTo("/customers"))">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <InputText class="form-control" @bind-Value="CustomerViewModel.Name"
+                   disabled="@(SystemFeatureType.Equals(SystemFeatureType.Details) || SystemFeatureType.Equals(SystemFeatureType.Delete))"/>
+        <ValidationMessage For="@(() => CustomerViewModel.Name)" />
+    </div>
+    <div class="form-group">
+        <label for="city">City</label>
+        <InputSelect @bind-Value="CustomerViewModel.CityId" class="form-control" 
+                     disabled="@(SystemFeatureType.Equals(SystemFeatureType.Details) || SystemFeatureType.Equals(SystemFeatureType.Delete))">
+            @foreach (CityViewModel city in cities)
+            {
+                <option value="@city.Id" selected="@(city.Id == CustomerViewModel.CityId)">@city.Name</option>
+            }
+        </InputSelect>
+        <ValidationMessage For="@(() => CustomerViewModel.CityId)" />
+    </div>
+</FormBaseComponent>

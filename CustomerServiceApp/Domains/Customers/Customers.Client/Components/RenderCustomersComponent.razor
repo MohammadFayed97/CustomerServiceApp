@@ -1,0 +1,36 @@
+@page "/customers"
+
+<PageTitle>All Customers</PageTitle>
+
+<a href="/customers/add" class="btn btn-primary">
+    Add
+    <span class="oi oi-plus"></span>
+</a>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">City</th>
+            <th scope="col">Operations</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (customers is not null && customers.Any())
+        {
+            foreach (var customer in customers)
+            {
+                <tr>
+                    <td>@customer.Id</td>
+                    <td>@customer.Name</td>
+                    <td>@customer.CityName</td>
+                    <td class="d-flex justify-content-around">
+                        <a href="/customers/edit/@customer.Id" title="Edit"><span class="oi oi-pencil"></span></a>
+                        <a href="/customers/details/@customer.Id" title="Details"><span class="oi oi-info" aria-hidden="true"></span></a>
+                        <a href="/customers/delete/@customer.Id" title="Delete"><span class="oi oi-trash" aria-hidden="true"></span></a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
