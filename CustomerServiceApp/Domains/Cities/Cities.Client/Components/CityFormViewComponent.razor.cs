@@ -1,6 +1,6 @@
 ﻿namespace Cities.Client.Components;
 
-public partial class DeleteCityComponent
+public partial class CityFormViewComponent
 {
     [Parameter]
     public Guid CityId { get; set; }
