@@ -3,4 +3,5 @@
 public interface IAuthenticationService
 {
     Task<AuthResponseViewModel> Login(UserForLoginViewModel userForLogin);
+    Task Logout();
 }

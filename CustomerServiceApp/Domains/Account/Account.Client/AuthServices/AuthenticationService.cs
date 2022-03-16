@@ -31,4 +31,10 @@ public class AuthenticationService : IAuthenticationService
 
         return new AuthResponseViewModel { IsAuthSuccessful = true };
     }
+    public async Task Logout()
+    {
+        await _localStorage.RemoveItemAsync("AuthToken");
+        ((AuthStateProvider)_authStateProvider).NotifyUserLogout();
+        _httpClient.DefaultRequestHeaders.Authorization = null;
+    }
 }
