@@ -3,27 +3,35 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerServiceApp.Server", "CustomerServiceApp\Server\CustomerServiceApp.Server.csproj", "{0EA5C107-1F1E-4087-AB63-D169F6E010CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerServiceApp.Server", "CustomerServiceApp\Server\CustomerServiceApp.Server.csproj", "{0EA5C107-1F1E-4087-AB63-D169F6E010CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerServiceApp.Client", "CustomerServiceApp\Client\CustomerServiceApp.Client.csproj", "{D41C6088-621B-44AF-8ED0-3C27FFDD5AE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerServiceApp.Client", "CustomerServiceApp\Client\CustomerServiceApp.Client.csproj", "{D41C6088-621B-44AF-8ED0-3C27FFDD5AE7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{0431C830-2A93-4064-B200-60A45B6C8834}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domains", "Domains", "{28CD69F7-6BBC-412E-B8C6-340D89665048}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppSquare.Shared", "CustomerServiceApp\Shared\AppSquare.Shared\AppSquare.Shared.csproj", "{B974EE99-D2BE-4A4A-82EE-452900CE935A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppSquare.Shared", "CustomerServiceApp\Shared\AppSquare.Shared\AppSquare.Shared.csproj", "{B974EE99-D2BE-4A4A-82EE-452900CE935A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppSquare.Shared.Server", "CustomerServiceApp\Shared\AppSquare.Shared.Server\AppSquare.Shared.Server.csproj", "{710A57D3-64EE-469F-B0D8-FDE0BEC5B55B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppSquare.Shared.Server", "CustomerServiceApp\Shared\AppSquare.Shared.Server\AppSquare.Shared.Server.csproj", "{710A57D3-64EE-469F-B0D8-FDE0BEC5B55B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppSquare.Shared.Client", "CustomerServiceApp\Shared\AppSquare.Shared.Client\AppSquare.Shared.Client.csproj", "{51812992-8ADF-4AD2-9BAA-E4BE751EBAEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppSquare.Shared.Client", "CustomerServiceApp\Shared\AppSquare.Shared.Client\AppSquare.Shared.Client.csproj", "{51812992-8ADF-4AD2-9BAA-E4BE751EBAEB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Account", "Account", "{9990DDE6-B395-413A-B34A-73D1B2378CE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Account.Shared", "CustomerServiceApp\Domains\Account\Account.Shared\Account.Shared.csproj", "{D81A298C-974B-48FC-9C59-468981518E0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Account.Shared", "CustomerServiceApp\Domains\Account\Account.Shared\Account.Shared.csproj", "{D81A298C-974B-48FC-9C59-468981518E0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Account.Server", "CustomerServiceApp\Domains\Account\Account.Server\Account.Server.csproj", "{9DD73427-C680-4810-89EF-6BCB5834A3B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Account.Server", "CustomerServiceApp\Domains\Account\Account.Server\Account.Server.csproj", "{9DD73427-C680-4810-89EF-6BCB5834A3B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Account.Client", "CustomerServiceApp\Domains\Account\Account.Client\Account.Client.csproj", "{FD8DC0F2-4BC5-4175-8B19-507E8192F8EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Account.Client", "CustomerServiceApp\Domains\Account\Account.Client\Account.Client.csproj", "{FD8DC0F2-4BC5-4175-8B19-507E8192F8EB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cities", "Cities", "{699E47AE-60C1-453F-B03E-32FF35887229}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cities.Client", "CustomerServiceApp\Domains\Cities\Cities.Client\Cities.Client.csproj", "{19F0BAB2-E14B-4DDC-BCAA-39BE99C5D189}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cities.Shared", "CustomerServiceApp\Domains\Cities\Cities.Shared\Cities.Shared.csproj", "{C70061EC-422D-4F0D-B2E1-EF77ED2B696D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cities.Server", "CustomerServiceApp\Domains\Cities\Cities.Server\Cities.Server.csproj", "{1BB68D6E-EC16-48C0-8234-1B841763ED54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +71,18 @@ Global
 		{FD8DC0F2-4BC5-4175-8B19-507E8192F8EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD8DC0F2-4BC5-4175-8B19-507E8192F8EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD8DC0F2-4BC5-4175-8B19-507E8192F8EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19F0BAB2-E14B-4DDC-BCAA-39BE99C5D189}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19F0BAB2-E14B-4DDC-BCAA-39BE99C5D189}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19F0BAB2-E14B-4DDC-BCAA-39BE99C5D189}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19F0BAB2-E14B-4DDC-BCAA-39BE99C5D189}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C70061EC-422D-4F0D-B2E1-EF77ED2B696D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C70061EC-422D-4F0D-B2E1-EF77ED2B696D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C70061EC-422D-4F0D-B2E1-EF77ED2B696D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C70061EC-422D-4F0D-B2E1-EF77ED2B696D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BB68D6E-EC16-48C0-8234-1B841763ED54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BB68D6E-EC16-48C0-8234-1B841763ED54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BB68D6E-EC16-48C0-8234-1B841763ED54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BB68D6E-EC16-48C0-8234-1B841763ED54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,6 +95,10 @@ Global
 		{D81A298C-974B-48FC-9C59-468981518E0F} = {9990DDE6-B395-413A-B34A-73D1B2378CE1}
 		{9DD73427-C680-4810-89EF-6BCB5834A3B3} = {9990DDE6-B395-413A-B34A-73D1B2378CE1}
 		{FD8DC0F2-4BC5-4175-8B19-507E8192F8EB} = {9990DDE6-B395-413A-B34A-73D1B2378CE1}
+		{699E47AE-60C1-453F-B03E-32FF35887229} = {28CD69F7-6BBC-412E-B8C6-340D89665048}
+		{19F0BAB2-E14B-4DDC-BCAA-39BE99C5D189} = {699E47AE-60C1-453F-B03E-32FF35887229}
+		{C70061EC-422D-4F0D-B2E1-EF77ED2B696D} = {699E47AE-60C1-453F-B03E-32FF35887229}
+		{1BB68D6E-EC16-48C0-8234-1B841763ED54} = {699E47AE-60C1-453F-B03E-32FF35887229}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3019E7CD-7882-4B18-82C0-BB0B3CF7B5AD}
