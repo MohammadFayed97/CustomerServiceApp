@@ -5,4 +5,4 @@ global using Microsoft.Extensions.Configuration;
 
 global using FluentValidation;
 global using AppSquare.Shared.AssemplyScanning;
-global using System.Text.Json;
+global using Newtonsoft.Json;

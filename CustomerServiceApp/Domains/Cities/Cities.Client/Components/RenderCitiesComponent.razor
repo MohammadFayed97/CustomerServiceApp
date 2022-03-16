@@ -1,0 +1,38 @@
+﻿@page "/cities"
+
+<PageTitle>All Cities</PageTitle>
+
+<a href="/cities/add" class="btn btn-primary">
+    Add
+    <span class="oi oi-plus"></span>
+</a>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Operations</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (cities is not null && cities.Any())
+        {
+            foreach (var city in cities)
+            {
+                <tr>
+                    <td>@city.Id</td>
+                    <td>@city.Name</td>
+                    <td class="d-flex justify-content-around">
+                        <a href="/cities/edit/@city.Id" title="Edit"><span class="oi oi-pencil"></span></a>
+                        <a href="/cities/details/@city.Id" title="Details"><span class="oi oi-info" aria-hidden="true"></span></a>
+                        <a href="/cities/delete/@city.Id" title="Delete"><span class="oi oi-trash" aria-hidden="true"></span></a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+@code {
+
+}
