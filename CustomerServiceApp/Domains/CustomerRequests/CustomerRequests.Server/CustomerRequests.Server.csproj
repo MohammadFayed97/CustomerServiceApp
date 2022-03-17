@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\AppSquare.Shared.Server\AppSquare.Shared.Server.csproj" />
+    <ProjectReference Include="..\..\Customers\Customers.Server\Customers.Server.csproj" />
+    <ProjectReference Include="..\..\Services\Services.Server\Services.Server.csproj" />
+    <ProjectReference Include="..\CustomerRequests.Shared\CustomerRequests.Shared.csproj" />
+  </ItemGroup>
+
+</Project>
