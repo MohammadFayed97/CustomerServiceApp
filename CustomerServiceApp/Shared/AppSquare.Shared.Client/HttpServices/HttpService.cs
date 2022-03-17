@@ -14,7 +14,7 @@ public class HttpService<TViewModel> : IHttpService<TViewModel>
         _toastService = toastService;
     }
 
-    public async Task<IEnumerable<TViewModel>> GetAsync(string url)
+    public virtual async Task<IEnumerable<TViewModel>> GetAsync(string url)
     {
         IEnumerable<TViewModel> viewModels = new List<TViewModel>();
         try
@@ -41,7 +41,7 @@ public class HttpService<TViewModel> : IHttpService<TViewModel>
         }
         return viewModels;
     }
-    public async Task<TViewModel> GetByIdAsync(string url)
+    public virtual async Task<TViewModel> GetByIdAsync(string url)
     {
         TViewModel cityViewModel = null;
         try
@@ -68,7 +68,7 @@ public class HttpService<TViewModel> : IHttpService<TViewModel>
         }
         return cityViewModel;
     }
-    public async Task<TViewModel> PostAsync(string url, TViewModel viewModel)
+    public virtual async Task<TViewModel> PostAsync(string url, TViewModel viewModel)
     {
         try
         {
@@ -97,7 +97,7 @@ public class HttpService<TViewModel> : IHttpService<TViewModel>
         }
         return viewModel;
     }
-    public async Task<TViewModel> PutAsync(string url, TViewModel viewModel)
+    public virtual async Task<TViewModel> PutAsync(string url, TViewModel viewModel)
     {
         try
         {
@@ -126,7 +126,7 @@ public class HttpService<TViewModel> : IHttpService<TViewModel>
         }
         return viewModel;
     }
-    public async Task<TViewModel> DeleteAsync(string url)
+    public virtual async Task<TViewModel> DeleteAsync(string url)
     {
         TViewModel viewModel = null;
         try

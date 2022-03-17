@@ -5,4 +5,5 @@ public interface IAuthenticationService
     Task<RegisterUserResponse> CreateUser(UserForRegisterViewModel userForRegister);
     Task<AuthResponseViewModel> Login(UserForLoginViewModel userForLogin);
     Task Logout();
+    Task<string> RefreshToken();
 }
