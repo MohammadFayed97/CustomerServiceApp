@@ -19,3 +19,5 @@ global using Account.Server.Repositories;
 global using Account.Shared.ViewModels;
 global using Account.Shared.Validations;
 global using FluentValidation;
+global using System.Security.Cryptography;
+global using Account.Server.TokenServices;
