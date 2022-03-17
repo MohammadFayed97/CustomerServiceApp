@@ -24,7 +24,7 @@ public partial class UserLogin
         {
             showErrors = false;
 
-            var response = await _authenticationService.Login(userForLogin);
+            var response = await _authenticationService.Login("api/Account/login", userForLogin);
             if (!response.IsAuthSuccessful)
             {
                 error = response.ErrorMessage;

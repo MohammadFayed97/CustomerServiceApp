@@ -2,20 +2,23 @@
 
 using Blazored.Toast.Services;
 
-public class HttpService<TViewModel> : IHttpService<TViewModel> 
+public class HttpService<TViewModel> : IHttpService<TViewModel>
     where TViewModel : BaseViewModel
 {
     private readonly HttpClient _httpClient;
+    private readonly HttpInterceptorService _httpInterceptor;
     private readonly IToastService _toastService;
 
-    public HttpService(HttpClient httpClient, IToastService toastService)
+    public HttpService(HttpClient httpClient, HttpInterceptorService httpInterceptor, IToastService toastService)
     {
         _httpClient = httpClient;
+        _httpInterceptor = httpInterceptor;
         _toastService = toastService;
     }
 
     public virtual async Task<IEnumerable<TViewModel>> GetAsync(string url)
     {
+        _httpInterceptor.RegisterEvent();
         IEnumerable<TViewModel> viewModels = new List<TViewModel>();
         try
         {
@@ -39,10 +42,12 @@ public class HttpService<TViewModel> : IHttpService<TViewModel>
             Console.WriteLine(exception.Message);
             _toastService.ShowToast(ToastLevel.Error, exception.Message);
         }
+        _httpInterceptor.DisposeEvent();
         return viewModels;
     }
     public virtual async Task<TViewModel> GetByIdAsync(string url)
     {
+        _httpInterceptor.RegisterEvent();
         TViewModel cityViewModel = null;
         try
         {
@@ -66,10 +71,12 @@ public class HttpService<TViewModel> : IHttpService<TViewModel>
             Console.WriteLine(exception.Message);
             _toastService.ShowError(exception.Message);
         }
+        _httpInterceptor.DisposeEvent();
         return cityViewModel;
     }
     public virtual async Task<TViewModel> PostAsync(string url, TViewModel viewModel)
     {
+        _httpInterceptor.RegisterEvent();
         try
         {
             var content = JsonConvert.SerializeObject(viewModel);
@@ -95,10 +102,12 @@ public class HttpService<TViewModel> : IHttpService<TViewModel>
             Console.WriteLine(exception.Message);
             _toastService.ShowError(exception.Message);
         }
+        _httpInterceptor.DisposeEvent();
         return viewModel;
     }
     public virtual async Task<TViewModel> PutAsync(string url, TViewModel viewModel)
     {
+        _httpInterceptor.RegisterEvent();
         try
         {
             var content = JsonConvert.SerializeObject(viewModel);
@@ -124,10 +133,12 @@ public class HttpService<TViewModel> : IHttpService<TViewModel>
             Console.WriteLine(exception.Message);
             _toastService.ShowError(exception.Message);
         }
+        _httpInterceptor.DisposeEvent();
         return viewModel;
     }
     public virtual async Task<TViewModel> DeleteAsync(string url)
     {
+        _httpInterceptor.RegisterEvent();
         TViewModel viewModel = null;
         try
         {
@@ -150,6 +161,7 @@ public class HttpService<TViewModel> : IHttpService<TViewModel>
             Console.WriteLine(exception.Message);
             _toastService.ShowError(exception.Message);
         }
+        _httpInterceptor.DisposeEvent();
         return viewModel;
     }
 }

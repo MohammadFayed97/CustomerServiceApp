@@ -12,7 +12,7 @@ public partial class CreateUserComponent
         showErrors = false;
         showSuccess = false;
 
-        var response = await _authenticationService.CreateUser(userForRegister);
+        var response = await _authenticationService.CreateUser("api/Account/RegisterUser", userForRegister);
         if (!response.IsSucceeded)
         {
             errors = response.Errors;

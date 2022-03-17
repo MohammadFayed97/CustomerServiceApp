@@ -1,4 +1,4 @@
-namespace Account.Shared.ViewModels;
+namespace AppSquare.Shared.ViewModels;
 
 public class UserForRegisterViewModel
 {

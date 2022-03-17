@@ -1,4 +1,2 @@
-﻿
-global using Account.Shared.ViewModels;
+﻿global using AppSquare.Shared.ViewModels;
 global using FluentValidation;
-global using AppSquare.Shared.ViewModels;

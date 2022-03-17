@@ -12,4 +12,5 @@ global using Microsoft.AspNetCore.Components;
 
 global using Blazored.LocalStorage;
 
+global using AppSquare.Shared.ViewModels;
 global using Newtonsoft.Json;
