@@ -1,0 +1,31 @@
+<FormBaseComponent TViewModel="CustomerRequestViewModel" ViewModel="CustomerRequestViewModel" SystemFeature="SystemFeatureType" FormTitle="@($"{SystemFeatureType.ToString()} Customer Requests")"
+                   HandleValidSubmit="HandleValidSubmit" OnCancel="@(() => _navigationManager.NavigateTo("/customerRequests"))">
+    <div class="form-group col-md-6">
+        <label for="customer">Customer</label>
+        <InputSelect @bind-Value="CustomerRequestViewModel.CustomerId" class="form-control"
+                     disabled="@(SystemFeatureType.Equals(SystemFeatureType.Details) || SystemFeatureType.Equals(SystemFeatureType.Delete))">
+            @foreach (CustomerViewModel customer in customers)
+            {
+                <option value="@customer.Id">@customer.Name</option>
+            }
+        </InputSelect>
+        <ValidationMessage For="@(() => CustomerRequestViewModel.CustomerId)" />
+    </div>
+    <div class="form-group col-md-6">
+        <label for="service">Service</label>
+        <InputSelect @bind-Value="CustomerRequestViewModel.ServiceId" class="form-control"
+                     disabled="@(SystemFeatureType.Equals(SystemFeatureType.Details) || SystemFeatureType.Equals(SystemFeatureType.Delete))">
+            @foreach (ServiceViewModel service in services)
+            {
+                <option value="@service.Id">@service.Name</option>
+            }
+        </InputSelect>
+        <ValidationMessage For="@(() => CustomerRequestViewModel.ServiceId)" />
+    </div>
+    <div class="form-group col-md-6">
+        <label for="TransactionDate">TransactionDate</label>
+        <InputDate @bind-Value="CustomerRequestViewModel.TransactionDate" class="form-control"
+                   disabled="@(SystemFeatureType.Equals(SystemFeatureType.Details) || SystemFeatureType.Equals(SystemFeatureType.Delete))" />
+        <ValidationMessage For="@(() => CustomerRequestViewModel.TransactionDate)" />
+    </div>
+</FormBaseComponent>

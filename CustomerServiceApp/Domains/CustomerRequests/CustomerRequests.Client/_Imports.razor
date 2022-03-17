@@ -1,0 +1,16 @@
+@using AppSquare.Shared.Client.HttpServices
+@using Blazored.Toast.Services
+@using Customers.Shared.ViewModels
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Components.Forms
+@using AppSquare.Shared.Client.Components
+@using CustomerRequests.Shared.ViewModels
+@using AppSquare.Shared.Client;
+@using Services.Shared.ViewModels
+
+@inject IToastService _toastService
+@inject IHttpService<CustomerRequestViewModel> _customerRequestHttpService
+@inject IHttpService<CustomerViewModel> _customerHttpService
+@inject IHttpService<ServiceViewModel> _serviceHttpService
+
+@inject NavigationManager _navigationManager
