@@ -63,7 +63,7 @@ public class AccountController : ControllerBase
         AuthResponseViewModel authResponse = new AuthResponseViewModel
         {
             IsAuthSuccessful = true,
-            Token = await _tokenService.CreateToken(user),
+            Token = await _tokenService.CreateToken(user, await _applicationUserRepository.GetUserRoles(user)),
             RefreshToken = user.RefreshToken
         };
         return Ok(authResponse);
@@ -76,7 +76,7 @@ public class AccountController : ControllerBase
 
         ClaimsPrincipal principal = _tokenService.GetPrincipalFromExpiredToken(refreshTokenViewModel.Token);
 
-        AppUser user = await _applicationUserRepository.GetUserByUserName(principal.Identity.Name);
+        AppUser user = await _applicationUserRepository.GetUserByUserName(principal.FindFirst(ClaimTypes.Name).Value);
 
         if(user is null || user.RefreshToken != refreshTokenViewModel.RefreshToken || user.RefreshTokenExpiryTime <= DateTime.Now)
         {
@@ -89,7 +89,7 @@ public class AccountController : ControllerBase
         AuthResponseViewModel authResponse = new AuthResponseViewModel
         {
             IsAuthSuccessful = true,
-            Token = await _tokenService.CreateToken(user),
+            Token = await _tokenService.CreateToken(user, await _applicationUserRepository.GetUserRoles(user)),
             RefreshToken = user.RefreshToken
         };
         return Ok(authResponse);

@@ -12,6 +12,7 @@ public class ApplicationUserRepository : IApplicationUserRepository
         return (user != null && await _userManager.CheckPasswordAsync(user, userForLogin.Password));
     }
     public async Task<AppUser> GetUserByUserName(string userName) => await _userManager.FindByNameAsync(userName);
+    public async Task<AppUser> GetUserByEmail(string email) => await _userManager.FindByEmailAsync(email);
     public async Task UpdateUser(AppUser user)
     {
         var result = await _userManager.UpdateAsync(user);
@@ -34,4 +35,7 @@ public class ApplicationUserRepository : IApplicationUserRepository
 
         return await _userManager.CreateAsync(user, userForRegister.Password);
     }
+
+    public async Task<IEnumerable<string>> GetUserRoles(AppUser user) => await _userManager.GetRolesAsync(user);
+
 }

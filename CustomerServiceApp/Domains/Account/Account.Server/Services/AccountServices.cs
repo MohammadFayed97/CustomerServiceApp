@@ -6,7 +6,7 @@ public class AccountServices : IInstaller
     {
         services.AddScoped<IValidator<UserForLoginViewModel>, UserForLoginValidator>();
         services.AddScoped<IValidator<UserForRegisterViewModel>, UserForRegisterValidator>();
-        services.AddScoped<IAuthenticationManager, AuthenticationManager>();
+        services.AddScoped<ITokenService, TokenService>();
         services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
     }
 }
