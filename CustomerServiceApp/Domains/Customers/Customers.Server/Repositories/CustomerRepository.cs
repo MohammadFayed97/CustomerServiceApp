@@ -10,6 +10,7 @@ public class CustomerRepository : BaseRepository<Customer>, ICustomerRepository
     {
     }
 
-    public override async Task<IEnumerable<Customer>> GetAllAsync() => await _table.Include(e => e.City).ToListAsync();
-    public override async Task<Customer> GetByIdAsync(Guid id) => await _table.Where(e => e.Id == id).Include(e => e.City).FirstOrDefaultAsync();
+    public override async Task<IEnumerable<Customer>> GetAllAsync() => await _table.Include(e => e.City).OrderBy(e => e.DisplayOrder).ToListAsync();
+    public override async Task<Customer> GetByIdAsync(Guid id) 
+        => await _table.Where(e => e.Id == id).Include(e => e.City).OrderBy(e => e.DisplayOrder).FirstOrDefaultAsync();
 }

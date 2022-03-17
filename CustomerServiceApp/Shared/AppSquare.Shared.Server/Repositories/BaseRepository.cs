@@ -7,7 +7,13 @@ public class BaseRepository<TEntity> : BaseGetRepository<TEntity>, IBaseReposito
     {
     }
 
-    public virtual async Task<TEntity> AddAsync(TEntity entity) => (await _table.AddAsync(entity)).Entity;
+    public virtual async Task<TEntity> AddAsync(TEntity entity)
+    {
+        int maxDisplayOrder = GetMaxDisplayOrder();
+        entity.DisplayOrder = ++maxDisplayOrder;
+
+        return (await _table.AddAsync(entity)).Entity;
+    }
     public virtual async Task<TEntity> EditAsync(TEntity entity)
     {
         TEntity entityFromDb = await GetByIdAsync(entity.Id);
@@ -25,5 +31,14 @@ public class BaseRepository<TEntity> : BaseGetRepository<TEntity>, IBaseReposito
         _table.Remove(entityFromDb);
         
         return entityFromDb;
+    }
+
+    public virtual int GetMaxDisplayOrder()
+    {
+        if (((IQueryable<TEntity>)_table).Any())
+        {
+            return ((IQueryable<TEntity>)_table).Max(e => e.DisplayOrder);
+        }
+        return 0;
     }
 }
