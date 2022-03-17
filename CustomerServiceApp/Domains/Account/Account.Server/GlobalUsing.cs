@@ -13,7 +13,6 @@ global using System.IdentityModel.Tokens.Jwt;
 global using AppSquare.Shared.Server;
 global using AppSquare.Shared.AssemplyScanning;
 
-global using Account.Server.AuthenticationManagers;
 global using Account.Server.Entities;
 global using Account.Server.Repositories;
 global using Account.Shared.ViewModels;
