@@ -23,6 +23,9 @@ public class ApplicationInstaller : IInstaller
         {
             options.SwaggerDoc("v1", new OpenApiInfo { Title = "CustomerServiceApp", Version = "v1" });
         });
-        services.AddAutoMapper(typeof(Program).Assembly);
+        services.AddAutoMapper(config =>
+        {
+            config.AllowNullCollections = true;
+        } , typeof(Program).Assembly);
     }
 }
