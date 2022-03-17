@@ -22,3 +22,5 @@ global using Microsoft.AspNetCore.Diagnostics;
 global using Microsoft.AspNetCore.Http;
 global using System.Net;
 global using FluentValidation.AspNetCore;
+global using FluentValidation;
+global using Microsoft.AspNetCore.Authorization;

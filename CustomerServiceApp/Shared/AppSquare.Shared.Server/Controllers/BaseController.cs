@@ -1,8 +1,7 @@
 ﻿namespace AppSquare.Shared.Server;
 
-using FluentValidation;
-using System.ComponentModel.DataAnnotations;
 
+[Authorize]
 public class BaseController<TEntity, TViewModel> : BaseGetController<TEntity, TViewModel>, IBaseController<TViewModel>
     where TEntity : BaseEntity
     where TViewModel : BaseViewModel
